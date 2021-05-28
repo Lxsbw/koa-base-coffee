@@ -1,0 +1,39 @@
+{
+  "name": "koa-base-coffee",
+  "version": "0.0.1",
+  "description": "Node.js & Koa2 & CoffeeScript & MVC & mongoose & swagger",
+  "scripts": {
+    "apidoc": "cp -rv src/apidoc dist/apidoc",
+    "dev": "coffee ./src/app.coffee",
+    "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
+    "prd": "pm2 start ./dist/app.js --name=koa-base-coffee",
+    "stop": "pm2 stop koa-base-coffee && pm2 delete koa-base-coffee",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "del": "rimraf node_modules dist yarn.lock"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lxsbw/koa-base-coffee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coffeescript": "~2.5.1",
+    "koa": "~2.13.1",
+    "koa-bodyparser": "~4.3.0",
+    "koa-convert": "~2.0.0",
+    "koa-json": "~2.0.2",
+    "koa-logger": "~3.2.1",
+    "koa-onerror": "~4.1.0",
+    "koa-router": "~10.0.0",
+    "koa-static": "~5.0.0",
+    "koa-views": "~6.2.0",
+    "koa2-swagger-ui": "~5.0.5",
+    "rimraf": "~3.0.2",
+    "swagger-jsdoc": "~6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "~2.0.7"
+  }
+}
