@@ -4,7 +4,8 @@
   "description": "Node.js & Koa2 & CoffeeScript & MVC & mongoose & swagger",
   "scripts": {
     "apidoc": "cp -rv src/apidoc dist/apidoc",
-    "dev": "coffee ./src/app.coffee",
+    "start": "npm run build && node dist/app.js",
+    "dev": "nodemon --watch 'src/' -e coffee ./src/app.coffee",
     "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
     "prd": "pm2 start ./dist/app.js --name=koa-base-coffee",
     "stop": "pm2 stop koa-base-coffee && pm2 delete koa-base-coffee",
