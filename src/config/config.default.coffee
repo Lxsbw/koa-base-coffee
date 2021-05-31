@@ -18,4 +18,29 @@ getMongoUrl = () ->
   mongoUrl += "#{mongoConf.user}:#{mongoConf.pass}@#{mongoConf.host}:#{mongoConf.port}"
   mongoUrl += "/#{dbName}"
 
-module.exports = { sysConfig, getMongoUrl }
+apicoffeeFiles = [
+    './src/controller'
+    './src/schema/request'
+  ]
+
+apiJSFiles = [
+    './dist/controller'
+    './dist/schema/request'
+  ]
+
+getCoffeeFiles = () ->
+  apicoffeeFiles.map (m) -> "#{m}/*.coffee"
+
+getJSFiles = () ->
+  apiJSFiles.map (m) -> "#{m}/*.js"
+
+getApiFiles = () ->
+  files = [].concat getCoffeeFiles(), getJSFiles()
+  # files = getJSFiles()
+  # console.log 'files:', files
+  # files
+
+getApiPath = () ->
+  apiJSFiles
+
+module.exports = { sysConfig, getMongoUrl, getApiFiles, getApiPath }
