@@ -45,8 +45,10 @@ options = {
   swaggerDefinition,
   # 写有注解的router的存放地址(当你新增swagger时文档里没显示出来的话那么就是这边地址没有加进去)
   apis: [
-    './src/apidoc/controller/*.js'
-    './src/apidoc/request/*.js'
+    './src/controller/*.coffee'
+    './src/schema/request/*.coffee'
+    # './apidoc/controller/*.js'
+    # './apidoc/request/*.js'
   ]
 }
 

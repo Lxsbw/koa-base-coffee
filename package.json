@@ -5,8 +5,8 @@
   "scripts": {
     "apidoc": "cp -rv src/apidoc dist/apidoc",
     "start": "npm run build && node dist/app.js",
-    "dev": "nodemon --watch 'src/' -e coffee ./src/app.coffee",
-    "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
+    "dev": "nodemon --watch 'src/*' -e coffee ./src/app.coffee",
+    "build": "rimraf dist && coffee -o dist -c -b src",
     "prd": "pm2 start ./dist/app.js --name=koa-base-coffee",
     "stop": "pm2 stop koa-base-coffee && pm2 delete koa-base-coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "coffeescript": "~2.5.1",
+    "cpr": "^3.0.1",
     "koa": "~2.13.1",
     "koa-bodyparser": "~4.3.0",
     "koa-convert": "~2.0.0",
@@ -31,6 +32,7 @@
     "koa-static": "~5.0.0",
     "koa-views": "~6.2.0",
     "koa2-swagger-ui": "~5.0.5",
+    "mongoose": "~5.11.10",
     "rimraf": "~3.0.2",
     "swagger-jsdoc": "~6.0.1"
   },

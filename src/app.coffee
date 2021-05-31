@@ -1,10 +1,11 @@
 Koa = require 'koa'
 bodyparser = require 'koa-bodyparser'
 json = require 'koa-json'
-appRouters = require './routes/router' # 路由
-{ sysConfig } = require './config/config.default' # 配置
-swagger = require './config/swagger'
 koaSwagger = require 'koa2-swagger-ui'
+mongoose = require 'mongoose'
+swagger = require './config/swagger'
+appRouters = require './routes/router' # 路由
+{ sysConfig, getMongoUrl } = require './config/config.default' # 配置
 
 class App
   constructor: () ->
@@ -13,6 +14,7 @@ class App
     @middleware()
     @swaggerInit()
     @routes()
+    @mongo()
     @launchConf()
 
   middleware: () ->
@@ -30,6 +32,23 @@ class App
 
   routes: () ->
     @app.use appRouters.routes(), appRouters.allowedMethods()
+
+  mongo: () ->
+    console.log getMongoUrl()
+    mongoose.connect(getMongoUrl(), {
+        useCreateIndex: true,
+        poolSize: 5, # 连接池中维护的连接数
+        useNewUrlParser: true,
+        autoIndex: false,
+        useUnifiedTopology: true
+        # keepAlive: 120,
+      })
+      .then((open) ->
+        console.log '📚  mongodb is launching...'
+      )
+      .catch((err) ->
+        console.error.bind console, "connection error:#{err}"
+      )
 
   launchConf: () ->
     console.log '===================================='

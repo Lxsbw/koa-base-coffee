@@ -1,4 +1,5 @@
 KoaRouter = require 'koa-router'
+MobilePhone = require '../controller/mobile-phone'
 
 class AppRouter
   constructor: () ->
@@ -6,15 +7,14 @@ class AppRouter
     @init()
 
   init: () ->
-    @appRouter.get '/', (ctx, next) ->
-      ctx.body = 'Hello, Koa CoffeeScript'
+    @appRouter.get '/api/mobile-phone/findone', MobilePhone.findOne
+    @appRouter.get '/api/mobile-phone/findall', MobilePhone.findall
+    @appRouter.post '/api/mobile-phone/create', MobilePhone.create
+    @appRouter.put '/api/mobile-phone/update', MobilePhone.update
+    @appRouter.delete '/api/mobile-phone/delete', MobilePhone.delete
 
-    @appRouter.post '/api/mobile-phone/create', (ctx, next) ->
-      console.log 'controller : ', JSON.stringify ctx.request.body
-      ctx.body = {
-        model_name: ctx.request.body.model_name
-        seria_number: ctx.request.body.seria_number
-      }
+    @appRouter.get '/', (ctx, next) ->
+      ctx.body = 'Hello Koa2 CoffeeScript!'
 
 appRouters = new AppRouter().appRouter
 
