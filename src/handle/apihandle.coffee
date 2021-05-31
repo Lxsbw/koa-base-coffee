@@ -2,6 +2,8 @@ fs = require 'fs'
 path = require 'path'
 { getApiPath } = require '../config/config.default' # 配置
 
+## 方法作用
+## 将编译后的js文件 -> 生成的注释/*替换成/**，即能解析成swagger document
 apiHandle = () ->
 
   paths = getApiPath()
@@ -12,7 +14,6 @@ apiHandle = () ->
 
     for file in files
       localdir = path.join(filePath, file)
-      fileType = fs.statSync(localdir)
 
       jsfile = fs.readFileSync(localdir, 'utf8')
       # 将/*替换成/**
