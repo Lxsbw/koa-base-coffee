@@ -1,7 +1,7 @@
 router = (require 'koa-router')() # 引入路由函数
 path = require 'path'
 swaggerJSDoc = require 'swagger-jsdoc'
-{ getApiFiles } = require './config.default' # 配置
+config = require './config.default' # 配置
 
 swaggerDefinition = {
   info: {
@@ -45,7 +45,7 @@ swaggerDefinition = {
 options = {
   swaggerDefinition,
   # 写有注解的router的存放地址(当你新增swagger时文档里没显示出来的话那么就是这边地址没有加进去)
-  apis: getApiFiles()
+  apis: config.getApiFiles()
 }
 
 # development
