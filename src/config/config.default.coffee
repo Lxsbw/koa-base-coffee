@@ -1,4 +1,7 @@
-config = exports? and exports
+# config = exports? and exports
+# config = (typeof exports !== "undefined" && exports !== null) && exports;
+
+config = {}
 
 config.sysConfig = {
   host: 'localhost'
@@ -44,4 +47,5 @@ config.getApiFiles = () ->
 config.getApiPath = () ->
   apiJSFiles
 
+module.exports = config
 # module.exports = { sysConfig, getMongoUrl, getApiFiles, getApiPath }
