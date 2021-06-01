@@ -9,16 +9,16 @@ apiHandle = () ->
   paths = getApiPath()
 
   for ph in paths
-    filePath = path.resolve(ph)
-    files = fs.readdirSync(filePath)
+    filePath = path.resolve(ph)  # 要遍历的文件夹
+    files = fs.readdirSync(filePath) # 读取文件列表
 
-    for file in files
-      localdir = path.join(filePath, file)
+    for file in files # 遍历文件列表
+      localdir = path.join(filePath, file) # 获取文件的本地路径
+      # fileType = fs.statSync(localdir) # 读取文件信息，可用于判断文件类型等
 
-      jsfile = fs.readFileSync(localdir, 'utf8')
-      # 将/*替换成/**
-      jsfile = jsfile.replace(new RegExp('\\/\\*', 'g'), '/**')
+      jsfile = fs.readFileSync(localdir, 'utf8') # 读取文件内容
+      jsfile = jsfile.replace(new RegExp('\\/\\*', 'g'), '/**') # 将/*替换成/**
 
-      fs.writeFileSync(localdir, jsfile, 'utf8')
+      fs.writeFileSync(localdir, jsfile, 'utf8') # 回写覆盖文件
 
 apiHandle()
