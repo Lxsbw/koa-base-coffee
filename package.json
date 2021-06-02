@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "Node.js & Koa2 & CoffeeScript & MVC & mongoose & swagger",
   "scripts": {
-    "apidoc": "node ./dist/handle/apihandle.js",
-    "start": "npm run build && node dist/app.js",
-    "dev": "nodemon --watch 'src/*' -e coffee ./src/app.coffee",
+    "apidoc": "node ./dist/handle/apihandle.js && cpr src/public dist/public -d",
+    "start": "npm run build && cross-env NODE_ENV=production node dist/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch 'src/*' -e coffee ./src/app.coffee",
     "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
-    "prd": "pm2 start ./dist/app.js --name=koa-base-coffee",
+    "prd": "cross-env NODE_ENV=production pm2 start ./dist/app.js --name=koa-base-coffee",
     "stop": "pm2 stop koa-base-coffee && pm2 delete koa-base-coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
     "del": "rimraf node_modules dist yarn.lock"
@@ -21,7 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "coffeescript": "~2.5.1",
-    "cpr": "^3.0.1",
+    "cpr": "~3.0.1",
+    "cross-env": "~7.0.3",
     "koa": "~2.13.1",
     "koa-bodyparser": "~4.3.0",
     "koa-convert": "~2.0.0",

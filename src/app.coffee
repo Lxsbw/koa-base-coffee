@@ -43,12 +43,10 @@ class App
         useUnifiedTopology: true
         # keepAlive: 120,
       })
-      .then((open) ->
+      .then (open) ->
         console.log '📚  mongodb is launching...'
-      )
-      .catch((err) ->
+      .catch (err) ->
         console.error.bind console, "connection error:#{err}"
-      )
 
   launchConf: () ->
     console.log '===================================='
