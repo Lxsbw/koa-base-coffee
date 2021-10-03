@@ -70,6 +70,28 @@ class MobilePhoneController extends BaseController
    *       '200':
    *         description: OK
   ###
+  ###
+   * @swagger
+   * /api/mobile-phone/findall:
+   *   head:
+   *     summary: 查找 Method HEAD
+   *     description: 查找 HEAD
+   *     tags: [MobilePhone]
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+  ###
+   * @swagger
+   * /api/mobile-phone/findall:
+   *   options:
+   *     summary: 查找 Method OPTIONS
+   *     description: 查找 OPTIONS
+   *     tags: [MobilePhone]
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
   findall: (ctx, next) ->
     ctx.body = await MobilePhoneService.find({
       _id: ctx.query._id,
