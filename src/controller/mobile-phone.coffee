@@ -4,14 +4,40 @@ MobilePhoneService = require '../service/mobile-phone'
 class MobilePhoneController extends BaseController
   ###
    * @swagger
-   * /api/mobile-phone/findone:
+   * /:
+   *   options:
+   *     summary: Method OPTIONS
+   *     description: OPTIONS
+   *     tags: [Home]
+   *     deprecated: false
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+
+  ###
+   * @swagger
+   * /:
+   *   head:
+   *     summary: Method HEAD
+   *     description: HEAD
+   *     tags: [Home]
+   *     deprecated: false
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+
+  ###
+   * @swagger
+   * /api/mobile-phone/findone/{_id}:
    *   get:
    *     summary: id查找
    *     description: id查找
    *     tags: [MobilePhone]
    *     deprecated: false
    *     parameters:
-   *     - in: "query"
+   *     - in: "path"
    *       name: "_id"
    *       type: "string"
    *       required: true
@@ -21,8 +47,8 @@ class MobilePhoneController extends BaseController
    *         description: OK
   ###
   findOne: (ctx, next) ->
-    console.log('controller : ', JSON.stringify(ctx.query._id))
-    ctx.body = await MobilePhoneService.findOne { _id: ctx.query._id }
+    console.log('controller : ', JSON.stringify(ctx.params))
+    ctx.body = await MobilePhoneService.findOne { _id: ctx.params._id }
 
   ###
    * @swagger
@@ -91,6 +117,28 @@ class MobilePhoneController extends BaseController
    *         description: OK
   ###
   update: (ctx, next) ->
+    console.log('controller : ', JSON.stringify(ctx.request.body))
+    ctx.body = await MobilePhoneService.update ctx.request.body
+
+  ###
+   * @swagger
+   * /api/mobile-phone/patch:
+   *   patch:
+   *     summary: 更新手机
+   *     description: 更新手机
+   *     tags: [MobilePhone]
+   *     parameters:
+   *     - in: "body"
+   *       name: "MobilePhoneUpdPatch"
+   *       description: "手机信息"
+   *       required: true
+   *       schema:
+   *         $ref: "#/definitions/MobilePhoneUpdPatch"
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+  updateByPatch: (ctx, next) ->
     console.log('controller : ', JSON.stringify(ctx.request.body))
     ctx.body = await MobilePhoneService.update ctx.request.body
 

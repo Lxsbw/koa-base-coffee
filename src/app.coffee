@@ -5,7 +5,7 @@ koaSwagger = require 'koa2-swagger-ui'
 mongoose = require 'mongoose'
 swagger = require './config/swagger'
 appRouters = require './routes/router' # 路由
-{ sysConfig, getMongoUrl } = require './config/config.default' # 配置
+{ sysConfig, getMongoUrl, env } = require './config/config.default' # 配置
 
 class App
   constructor: () ->
@@ -32,9 +32,11 @@ class App
 
   routes: () ->
     @app.use appRouters.routes(), appRouters.allowedMethods()
+    @app.use appRouters.allowedMethods()
 
   mongo: () ->
     console.log getMongoUrl()
+    mongoose.set('debug', env.DEBUG)
     mongoose.connect(getMongoUrl(), {
         useCreateIndex: true,
         poolSize: 5, # 连接池中维护的连接数

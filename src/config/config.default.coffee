@@ -8,6 +8,11 @@ config.sysConfig = {
   port: 8001
 }
 
+config.env = {
+  DEBUG: true,
+  ENV: ''
+}
+
 mongoConf = {
   user: 'test_user',
   pass: '123456',
