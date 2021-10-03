@@ -2,6 +2,8 @@
   "name": "koa-base-coffee",
   "version": "0.0.1",
   "description": "Node.js & Koa2 & CoffeeScript & MVC & mongoose & swagger",
+  "private": true,
+  "type": "module",
   "scripts": {
     "apidoc": "node ./dist/handle/apihandle.js && cpr src/public dist/public -d",
     "start": "npm run build && cross-env NODE_ENV=production node dist/app.js",

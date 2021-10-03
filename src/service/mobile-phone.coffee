@@ -1,6 +1,7 @@
-
-BaseService = require '../handle/base-service'
-mobilePhoneModel = (require '../models/mobile-phone').mobilePhone
+# BaseService = require '../handle/base-service'
+import BaseService from '../handle/base-service'
+# mobilePhoneModel = (require '../models/mobile-phone').mobilePhone
+import mobilePhoneModel from '../models/mobile-phone'
 
 class MobilePhoneService extends BaseService
   # 查找一个
@@ -76,4 +77,5 @@ class MobilePhoneService extends BaseService
 
     return result
 
-module.exports = new MobilePhoneService()
+export default new MobilePhoneService()
+# module.exports = new MobilePhoneService()

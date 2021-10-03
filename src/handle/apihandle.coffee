@@ -1,6 +1,9 @@
-fs = require 'fs'
-path = require 'path'
-{ getApiPath } = require '../config/config.default' # 配置
+# fs = require 'fs'
+import fs from 'fs'
+# path = require 'path'
+import path from 'path'
+# { getApiPath } = require '../config/config.default' # 配置
+import { getApiPath } from '../config/config.default'
 
 ## 方法作用
 ## 将编译后的js文件 -> 生成的注释/*替换成/**，即能解析成swagger document

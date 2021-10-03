@@ -1,11 +1,19 @@
-Koa = require 'koa'
-bodyparser = require 'koa-bodyparser'
-json = require 'koa-json'
-koaSwagger = require 'koa2-swagger-ui'
-mongoose = require 'mongoose'
-swagger = require './config/swagger'
-appRouters = require './routes/router' # 路由
-{ sysConfig, getMongoUrl, env } = require './config/config.default' # 配置
+# Koa = require 'koa'
+import Koa from 'koa'
+# bodyparser = require 'koa-bodyparser'
+import bodyparser from 'koa-bodyparser'
+# json = require 'koa-json'
+import json from 'koa-json'
+# koaSwagger = require 'koa2-swagger-ui'
+import koaSwagger from 'koa2-swagger-ui'
+# mongoose = require 'mongoose'
+import mongoose from 'mongoose'
+# swagger = require './config/swagger'
+import swagger from './config/swagger'
+# appRouters = require './routes/router' # 路由
+import appRouters from './routes/router'
+# { sysConfig, getMongoUrl, env } = require './config/config.default' # 配置
+import { sysConfig, getMongoUrl, env } from './config/config.default'
 
 class App
   constructor: () ->
@@ -65,4 +73,5 @@ class App
       console.log '===================================='
     )
 
-module.exports = new App().app
+# module.exports = new App().app
+export default new App().app

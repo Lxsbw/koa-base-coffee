@@ -1,5 +1,7 @@
-KoaRouter = require 'koa-router'
-MobilePhone = require '../controller/mobile-phone'
+# KoaRouter = require 'koa-router'
+import KoaRouter from 'koa-router'
+# MobilePhone = require '../controller/mobile-phone'
+import MobilePhone from '../controller/mobile-phone'
 
 class AppRouter
   constructor: () ->
@@ -19,4 +21,5 @@ class AppRouter
 
 appRouters = new AppRouter().appRouter
 
-module.exports = appRouters
+# module.exports = appRouters
+export default appRouters

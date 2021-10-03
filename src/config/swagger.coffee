@@ -1,7 +1,13 @@
-router = (require 'koa-router')() # 引入路由函数
-path = require 'path'
-swaggerJSDoc = require 'swagger-jsdoc'
-config = require './config.default' # 配置
+# router = (require 'koa-router')() # 引入路由函数
+import KoaRouter from 'koa-router'
+# path = require 'path'
+import path from 'path'
+# swaggerJSDoc = require 'swagger-jsdoc'
+import swaggerJSDoc from 'swagger-jsdoc'
+# config = require './config.default' # 配置
+import config from './config.default'
+
+router = new KoaRouter()
 
 swaggerDefinition = {
   info: {
@@ -56,4 +62,5 @@ router.get '/swagger.json', (ctx) ->
   ctx.set 'Content-Type', 'application/json'
   ctx.body = swaggerSpec
 
-module.exports = router
+export default router
+# module.exports = router

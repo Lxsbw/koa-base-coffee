@@ -41,5 +41,6 @@ config.getApiFiles = (env) ->
 config.getApiPath = () ->
   apiJSFiles
 
-module.exports = config
+export default config
+# module.exports = config
 # module.exports = { sysConfig, getMongoUrl, getApiFiles, getApiPath }

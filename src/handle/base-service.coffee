@@ -1,4 +1,5 @@
 
 class BaseService
 
-module.exports = BaseService
+export default BaseService
+# module.exports = BaseService

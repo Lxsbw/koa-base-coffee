@@ -1,5 +1,7 @@
-BaseController = require '../handle/base-controller'
-MobilePhoneService = require '../service/mobile-phone'
+# BaseController = require '../handle/base-controller'
+import BaseController from '../handle/base-controller'
+# MobilePhoneService = require '../service/mobile-phone'
+import MobilePhoneService from '../service/mobile-phone'
 
 class MobilePhoneController extends BaseController
   ###
@@ -186,4 +188,5 @@ class MobilePhoneController extends BaseController
     console.log('controller : ', JSON.stringify(ctx.request.body))
     ctx.body = await MobilePhoneService.delete ctx.request.body
 
-module.exports = new MobilePhoneController()
+export default new MobilePhoneController()
+# module.exports = new MobilePhoneController()

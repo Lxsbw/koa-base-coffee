@@ -1,4 +1,5 @@
-mongoose = require 'mongoose'
+# mongoose = require 'mongoose'
+import mongoose from 'mongoose'
 
 mobilePhoneSchema = new mongoose.Schema(
   {
@@ -20,4 +21,5 @@ mobilePhoneSchema = new mongoose.Schema(
 console.log '实体类mobilePhone:', new Date().getTime()
 mobilePhone = mongoose.model 'mobilePhone', mobilePhoneSchema, 'mobile-phone'
 
-module.exports = { mobilePhone }
+export default mobilePhone
+# module.exports = { mobilePhone }
