@@ -3,13 +3,13 @@ import fs from 'fs'
 # path = require 'path'
 import path from 'path'
 # { getApiPath } = require '../config/config.default' # 配置
-import { getApiPath } from '../config/config.default'
+import config from '../config/config.default'
 
 ## 方法作用
 ## 将编译后的js文件 -> 生成的注释/*替换成/**，即能解析成swagger document
 apiHandle = () ->
 
-  paths = getApiPath()
+  paths = config.getApiPath()
 
   for ph in paths
     filePath = path.resolve(ph)  # 要遍历的文件夹

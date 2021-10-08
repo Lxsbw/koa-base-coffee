@@ -13,7 +13,11 @@ import swagger from './config/swagger'
 # appRouters = require './routes/router' # 路由
 import appRouters from './routes/router'
 # { sysConfig, getMongoUrl, env } = require './config/config.default' # 配置
-import { sysConfig, getMongoUrl, env } from './config/config.default'
+import config from './config/config.default'
+{ sysConfig, getMongoUrl, env } = config
+# sysConfig = config.sysConfig
+# getMongoUrl = config.getMongoUrl
+# env = config.env
 
 class App
   constructor: () ->

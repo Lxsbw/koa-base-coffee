@@ -5,8 +5,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "apidoc": "node ./dist/handle/apihandle.js && cpr src/public dist/public -d",
-    "start": "npm run build && cross-env NODE_ENV=production node dist/app.js",
+    "setES" : "NODE_OPTIONS=--experimental-specifier-resolution=node",
+    "apidoc": "npm run setES node ./dist/handle/apihandle.js && cpr src/public dist/public -d",
+    "start": "npm run build && npm run setES cross-env NODE_ENV=production node dist/app.js",
     "dev": "cross-env NODE_ENV=development nodemon --watch 'src/*' -e coffee ./src/app.coffee",
     "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
     "prd": "cross-env NODE_ENV=production pm2 start ./dist/app.js --name=koa-base-coffee",
